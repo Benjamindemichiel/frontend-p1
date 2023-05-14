@@ -1,8 +1,8 @@
 FROM node:14-alpine
 
-WORKDIR /app1
+WORKDIR /app
 
-COPY ./package*.json /app1/
+COPY ./package*.json /app/
 
 RUN yarn install 
 
