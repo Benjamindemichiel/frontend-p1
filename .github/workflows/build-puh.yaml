@@ -21,10 +21,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          repository: bdemichiel/frontend1
           file: Dockerfile
           context: .
           push: true
           tag_with_ref: true
           tag_with_sha: true
-          tags: latest, ${{ github.sha }}
+          tags: bdemichiel/frontend1:${{ github.sha }}
