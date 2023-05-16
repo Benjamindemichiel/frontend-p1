@@ -26,7 +26,24 @@ jobs:
           push: true
           tag_with_ref: true
           tag_with_sha: true
-          tags: bdemichiel/frontend1:${{ github.sha }}
+          tags: bdemichiel/frontend1:latest, ${{ github.sha }}
+
+  minikube-deploy:
+    runs-on: ubuntu-latest
+    needs: docker-build
+    steps:
+      - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@master
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Deploy-App
+        run: |
+          kubectl apply -f ./kubernetesdeploy/frontend/
+          minikube service list
+          minikube service fronted
 
   slackNotification:
     name: Slack Notification
