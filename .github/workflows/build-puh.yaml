@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy-App
         run: |
-          kubectl apply -f ./kubernetesdeploy/frontend/ --set image.tag=latest
+          kubectl apply -f ./kubernetesdeploy/frontend/
       
       - name: list-services
         run: |  
